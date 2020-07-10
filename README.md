@@ -1,36 +1,11 @@
-# PhpSpec Skip Example Extension
+# Phpspec Skip Example Extension
 
-This PhpSpec extension allows to skip example through user-friendly annotations.
-[![Build Status](https://travis-ci.org/akeneo/PhpSpecSkipExampleExtension.png?branch=master)](https://travis-ci.org/akeneo/PhpSpecSkipExampleExtension)
+This Phpspec extension allows to skip example through user-friendly annotations.
 
 ## Installation
 
-Once you have installed PhpSpec (following the documentation on [the official website](http://www.phpspec.net)), add the extension requirement to your `composer.json`:
-
-Using phpspec 4.x,
-
-```json
-{
-    "require": {
-        "akeneo/phpspec-skip-example-extension": "^3.0"
-    }
-}
 ```
-
-Using phpspec 5.x,
-
-```json
-{
-    "require": {
-        "akeneo/phpspec-skip-example-extension": "^4.0"
-    }
-}
-```
-
-And run composer update:
-
-```bash
-$ php composer.phar update akeneo/phpspec-skip-example-extension
+$ composer require "graham-campbell/phpspec-skip-example-extension:^5.0"
 ```
 
 ## Configuration

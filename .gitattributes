@@ -1,0 +1,8 @@
+* text=auto
+
+/spec export-ignore
+/.gitattributes export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/phpspec.yml.dist export-ignore
+/README.md export-ignore
