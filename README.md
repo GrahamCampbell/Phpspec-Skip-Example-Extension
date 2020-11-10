@@ -5,7 +5,7 @@ This Phpspec extension allows to skip example through user-friendly annotations.
 ## Installation
 
 ```
-$ composer require "graham-campbell/phpspec-skip-example-extension:^5.0"
+$ composer require "graham-campbell/phpspec-skip-example-extension:^5.1"
 ```
 
 ## Configuration

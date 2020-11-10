@@ -25,14 +25,19 @@ jobs:
           tools: composer:v2
           coverage: none
 
+      - name: Setup Dependencies
+        uses: nick-invision/retry@v1
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer require "phpspec/phpspec:5.*" --no-update
+
       - name: Install Dependencies
         uses: nick-invision/retry@v1
         with:
           timeout_minutes: 5
           max_attempts: 5
-          command: |
-            composer require "phpspec/phpspec:5.*" --no-update
-            composer update --no-interaction --no-progress
+          command: composer update --no-interaction --no-progress
 
       - name: Execute PHPSpec
         run: vendor/bin/phpspec run
@@ -43,7 +48,7 @@ jobs:
 
     strategy:
       matrix:
-        php: ['7.2', '7.3', '7.4']
+        php: ['7.2', '7.3', '7.4', '8.0']
 
     steps:
       - name: Checkout Code
@@ -57,14 +62,56 @@ jobs:
           tools: composer:v2
           coverage: none
 
+      - name: Setup Dependencies
+        uses: nick-invision/retry@v1
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer require "phpspec/phpspec:6.*" --no-update
+
       - name: Install Dependencies
         uses: nick-invision/retry@v1
         with:
           timeout_minutes: 5
           max_attempts: 5
-          command: |
-            composer require "phpspec/phpspec:6.*" --no-update
-            composer update --no-interaction --no-progress
+          command: composer update --no-interaction --no-progress
+
+      - name: Execute PHPSpec
+        run: vendor/bin/phpspec run
+
+  phpspec7:
+    name: PHPSpec 7 PHP ${{ matrix.php }}
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        php: ['7.3', '7.4', '8.0']
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: curl
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Dependencies
+        uses: nick-invision/retry@v1
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer require "phpspec/phpspec:7.*" --no-update
+
+      - name: Install Dependencies
+        uses: nick-invision/retry@v1
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer update --no-interaction --no-progress
 
       - name: Execute PHPSpec
         run: vendor/bin/phpspec run
